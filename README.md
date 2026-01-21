@@ -1,0 +1,2 @@
+# gmr-api
+Serverless functions
