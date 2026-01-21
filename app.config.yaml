@@ -1,0 +1,35 @@
+application:
+  actions: actions
+  web: web-src
+  runtimeManifest:
+    packages:
+      gmr-api:
+        license: Apache-2.0
+        actions:
+          generic:
+            function: actions/generic/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: true
+              final: true
+          publish-events:
+            function: actions/publish-events/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+              apiKey: $SERVICE_API_KEY
+            annotations:
+              require-adobe-auth: true
+              final: true
+          success-story:
+            function: actions/success-story/index.js
+            web: 'yes'
+            runtime: nodejs:22
+          news-update:
+            function: actions/news-update/index.js
+            web: 'yes'
+            runtime: nodejs:22
