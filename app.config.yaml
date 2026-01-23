@@ -33,3 +33,8 @@ application:
             function: actions/news-update/index.js
             web: 'yes'
             runtime: nodejs:22
+          algolia-indexer:
+            function: actions/algolia-indexer/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            
