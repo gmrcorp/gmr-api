@@ -1,0 +1,12 @@
+packages:
+  gmr-api:
+    actions:
+      run-job:
+        function: actions/algolia-indexer/index.js
+        runtime: nodejs:18
+    triggers:
+      daily-trigger:
+        feed: /whisk.system/alarms/cron
+        inputs:
+          cron: "0 2 * * *"
+          timezone: "Asia/Kolkata"

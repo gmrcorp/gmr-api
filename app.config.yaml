@@ -37,4 +37,9 @@ application:
             function: actions/algolia-indexer/index.js
             web: 'yes'
             runtime: nodejs:22
-            
+        triggers:
+          daily-trigger:
+            feed: /whisk.system/alarms/cron
+            inputs:
+              cron: "0 2 * * *"
+              timezone: "Asia/Kolkata"
