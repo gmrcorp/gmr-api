@@ -1,4 +1,6 @@
-import 'dotenv/config';
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import algoliasearch from 'algoliasearch';
 import fetch from 'node-fetch';
 import { createRequire } from "module";
@@ -8,6 +10,9 @@ const require = createRequire(import.meta.url);
 const pdfModule = require("pdf-parse");
 const pdf = pdfModule.default || pdfModule;
 import mammoth from "mammoth";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function limitText(text, maxBytes = 8000) {
   if (!text) return "";
@@ -20,13 +25,15 @@ function limitText(text, maxBytes = 8000) {
   return result;
 }
 
+dotenv.config({
+  path: path.resolve(__dirname, "../../.env")
+});
 /* ===============================
    Algolia config (WITH ENV VARS)
 ================================ */
-const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID ;
+const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID;
 const ALGOLIA_WRITE_KEY = process.env.ALGOLIA_WRITE_KEY;
 const ALGOLIA_INDEX = process.env.ALGOLIA_INDEX;
-
 const SITE_URL = process.env.SITE_URL;
 
 if (!ALGOLIA_APP_ID || !ALGOLIA_WRITE_KEY) {
