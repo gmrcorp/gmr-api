@@ -8,10 +8,6 @@ build
 dist
 .manifest-dist.yml
 
-# Config
-config.json
-.env*
-.aio
 
 # Adobe I/O console config
 console.json
