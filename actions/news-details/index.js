@@ -2,18 +2,11 @@ const fetch = require("node-fetch");
 
 exports.main = async (params) => {
     try {
-        const category = params.category || 'global';
-        const limit = params.limit || 3;
-        const offset = params.offset || 0;
 
         let url;
 
-        if (category !== 'global') {
-        url = `https://publish-p168597-e1803019.adobeaemcloud.com/graphql/execute.json/GMR/newsListApi;category=${category};limit=${limit};offset=${offset}`;
-        } else {
-        url = `https://publish-p168597-e1803019.adobeaemcloud.com/graphql/execute.json/GMR/newsListApi;limit=${limit};offset=${offset}`;
-        }
-console.log(url);
+        url = `https://publish-p168597-e1803019.adobeaemcloud.com/graphql/execute.json/GMR/news-details;slugUrl=${params.slugUrl}`;
+        console.log(url);
         const response = await fetch(url, {
             method: "GET",
             headers: {

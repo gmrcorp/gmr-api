@@ -2,25 +2,17 @@ const fetch = require("node-fetch");
 
 exports.main = async (params) => {
     try {
-        const category = params.category || 'global';
+        const category = params.category || 'press-release';
         const limit = params.limit || 3;
-        const offset = params.offset || 0;
-
-        let url;
-
-        if (category !== 'global') {
-        url = `https://publish-p168597-e1803019.adobeaemcloud.com/graphql/execute.json/GMR/newsListApi;category=${category};limit=${limit};offset=${offset}`;
-        } else {
-        url = `https://publish-p168597-e1803019.adobeaemcloud.com/graphql/execute.json/GMR/newsListApi;limit=${limit};offset=${offset}`;
-        }
-console.log(url);
+        console.log("______________________________________", category);
+        
+        const url = `https://publish-p168597-e1803019.adobeaemcloud.com/graphql/execute.json/GMR/recent-posts;category=${category};limit=${limit};`;
         const response = await fetch(url, {
             method: "GET",
             headers: {
                 "Accept": "application/json"
             }
         });
-console.log(response.status);
         if (!response.ok) {
             return {
                 statusCode: response.status,

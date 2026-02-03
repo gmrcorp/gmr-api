@@ -33,13 +33,33 @@ application:
             function: actions/news-update/index.js
             web: 'yes'
             runtime: nodejs:22
+          news-details:
+            function: actions/news-details/index.js
+            web: 'yes'
+            runtime: nodejs:22
           algolia-indexer:
             function: actions/algolia-indexer/index.js
             web: 'yes'
             runtime: nodejs:22
-        triggers:
-          daily-trigger:
-            feed: /whisk.system/alarms/cron
-            inputs:
-              cron: "0 2 * * *"
-              timezone: "Asia/Kolkata"
+          csv-to-cf:
+            function: actions/csv-to-cf/index.js
+            web: 'yes'
+            runtime: nodejs:22
+          news-pre:
+            function: actions/news-pre/index.js
+            web: 'yes'
+            runtime: nodejs:22
+          news-next:
+            function: actions/news-next/index.js
+            web: 'yes'
+            runtime: nodejs:22
+          recent-posts:
+            function: actions/recent-posts/index.js
+            web: 'yes'
+            runtime: nodejs:22
+        # triggers:
+        #   daily-trigger:
+        #     feed: /whisk.system/alarms/cron
+        #     inputs:
+        #       cron: "0 2 * * *"
+        #       timezone: "Asia/Kolkata"
