@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
-import algoliasearch from 'algoliasearch';
+import { algoliasearch } from 'algoliasearch';
 import fetch from 'node-fetch';
 import { createRequire } from "module";
 

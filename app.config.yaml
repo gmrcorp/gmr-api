@@ -41,10 +41,6 @@ application:
             function: actions/algolia-indexer/index.js
             web: 'yes'
             runtime: nodejs:22
-          csv-to-cf:
-            function: actions/csv-to-cf/index.js
-            web: 'yes'
-            runtime: nodejs:22
           news-pre:
             function: actions/news-pre/index.js
             web: 'yes'
